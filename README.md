@@ -1,1 +1,1 @@
-Sciene Fair
+Science Fair
