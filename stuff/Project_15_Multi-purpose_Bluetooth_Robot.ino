@@ -16,8 +16,8 @@ unsigned char clear[] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
 #define SDA_Pin  A4
 
 #include "SR04.h"
-#define TRIG_PIN 12
-#define ECHO_PIN 13
+#define TRIG_PIN 13
+#define ECHO_PIN 12
 SR04 sr04 = SR04(ECHO_PIN,TRIG_PIN);
 long distance,distance1,distance2,distance3;
 
@@ -29,7 +29,7 @@ const int sensor_l = 11;
 const int sensor_c = 7;
 const int sensor_r = 8;
 int l_val,c_val,r_val;
-const int servopin = 10;
+const int servopin = 9;
 char BLE_val;
 
 void setup() {
@@ -51,11 +51,13 @@ void setup() {
 }
 
 void loop() {
+  
   if(Serial.available()>0)
   {
     BLE_val = Serial.read();
     Serial.println(BLE_val);
   }
+
   switch(BLE_val)
   {
     case 'F': front(); matrix_display(front_matrix); break;
